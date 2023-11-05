@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculate</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript">
+        function AmountChange() {
+            document.getElementById("txtAmount").value=document.getElementById("rangeAmount").value;
+        }
+        function RateChange() {
+            document.getElementById("txtYears").value=document.getElementByid("rangeYear").value;
+        }
+        function RateChange() {
+            document.getElementById("txtRate").value=document.getElementById("rangeRate").value;
+        }
+        function CalculateClick() {
+            var P=parseInt(document.getElementByid("txtAmount").value);
+            var R=parseFloat(document.getElementById("txtRate").value)/12/100;
+            var N=parseInt(document.getElementById("txtYears").value)*12;
+            var EMI=P*R*Math.pow((1+R),N)/Math.pow((1+R),N)-1;
+            document.getElementById("lblResult").innerHTML = "Your EMI amount every month is $#8377;<b>" +Math.round(EMI)+"</b>for "+N+" months".
+        }
+    </script>
+</head>
+<body class="container-fluid bg-dark">
+    <h3 class="text-center text-light mt-4">Personal Loan EML Calculator</h3>
+    <div class="bg-light p-4">
+        <div class="col">
+            Amount you need &#8377; <input type="text" id="txtAmount">
+        </div>
+        <div class="col">
+            for<input type="text" id="txtYears" size="4">Years
+        </div>
+        <div class="col">
+            Interest rate<input type="text" id="txtRate" size="4">%
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <input type="range" onchange="AmountChange()" class="form-range" id="rangeAmount" min="50000" max="1000000" value="50000">
+        </div>
+        <div class="col">
+            <input type="range" onchange="YearChange()" class="form-range" id="rangeYear" min="1" max="5" value="1">
+        </div>
+        <div class="col">
+            <input type="range" onchange="RateChange()" class="form-range" id="rangeRate" min="10.50"  step="0.1" max="21.00" value="10.50">       
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col d-flex justify-content-between">
+            <span>&#8377; 50,000</span>
+            <span>&#8377; 10,00,000</span>
+        </div>
+        <div class="col d-flex justify-content-between">
+            <span>1</span>
+            <span>5</span>
+        </div>
+        <div class="col d-flex justify-content-between">
+            <span>10.50%</span>
+            <span>21%</span>
+        </div>
+        <div class="row mt-4">
+            <div class="col textt-end">
+                <button onclick="CalculateClick()" class="btn btn-primary">Calculate</button>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col text-center">
+                <span id="lblResult" class="h3"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
