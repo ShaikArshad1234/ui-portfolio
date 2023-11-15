@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var appointments=[];
+        function LoadTask() {
+            document.getElementById("lstTasks").innerHTML ="";
+            appointments.map(function(item){
+                var li = document.createElement("li");
+                li.innerHTML = item;
+                document.getElementById("lstTasks").appendChild(li);
+            })
+        }
+        function AddClick() {
+            var title = document.getElementById("txtTitle").value;
+            var date = document.getElementById("txtDate").value;
+            var appointment = `${title} - ${date} <button onclick='DeleteClick("${title}","${date}")'>Delete</button>`;
+            appointments.push(appointment);
+            alert(`Appointment Added to your To-Do list`);
+            LoadTask();
+        }
+        function DeleteClick(title, date) {
+            var appointment = `${title} - ${date}<button onclick='DeleteClick()("${title}", "${date}")'>Delete</button>`;
+            var index = appointments.indexOf(appointment);
+            if(confirm(`Are you sure you want to delete"${title}" set for the date "${date}"?`)){
+                appointments.splice(index,1);
+                LoadTask();
+            }
+        
+        }
+
+    </script>
+    <style>
+        ul {
+            list-style:none;
+        }
+        li {
+            background-color: black;
+            color: white;
+            padding: 5px;
+            margin-bottom: 15px;
+            width: 40%;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <h3>To-Do</h3>
+    <div>
+        <input id="txtTitle" type="text" placeholder="Your Appointment Title">
+        <input type="date" id="txtDate">
+        <button onclick="AddClick()">Add</button>
+    </div>
+    <div>
+        <ul id="lstTasks"></ul>
+    </div>
+</body>
+</html>
