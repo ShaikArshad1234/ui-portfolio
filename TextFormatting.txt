@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link ref="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link ref="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <title>Text Formatting</title>
+    <style>
+        body {
+            background-color: rgb(189, 179, 179);
+            border: 10px solid white;
+
+        }
+        .container {
+            margin-top: 20px;
+            
+        }
+        .card {
+            padding: 10px;
+            display: flex;
+        }
+        #result,#heading {
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+        function alignLeft() {
+            document.getElementById("txtResult").style.textAlign = "left";
+        }
+        function alignCenter() {
+            document.getElementById("txtResult").style.textAlign = "center";
+        }
+        function alignRight() {
+            document.getElementById("txtResult").style.textAlign = "right";
+        }
+        function colorChange() {
+            document.getElementById("txtResult").style.color = document.getElementById("fontColor").value;
+        }
+        function rangeChange() {
+            var fontSizeValue = document.getElementById("fontRange").value;
+            document.getElementById("txtResult").style.fontSize = fontSizeValue + "px";
+        }
+        function optChange() {
+            var styleValue = document.getElementById("styleChange").value;
+            if (styleValue === "italic") {
+                document.getElementById("txtResult").style.fontStyle = "italic";
+                document.getElementById("txtResult").style.fontWeight = "normal";
+            } else if (styleValue === "bold") {
+                document.getElementById("txtResult").style.fontStyle = "normal";
+                document.getElementById("txtResult").style.fontWeight = "bold";
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card bg-dark text-light mb-3">
+                    <h3 id="heading">Text Formatting Alignment</h3>
+                </div>
+            </div>
+
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <label class="h3" for="fontRange">Font Size</label>
+                    <input type="range" min="10" max="70" oninput="rangeChange()" id="fontRange" class="form-range">
+                </div>
+                <div class="card mt-2">
+                    <label class="h3" for="fontColor">Font Color</label>
+                    <input type="color" oninput="colorChange()" id="fontColor" class="form-control">
+                </div>
+                <div class="card mt-2">
+                    <label class="h3" for="styleChange">Font Style</label>
+                    <select onchange="optChange()" id="styleChange" class="form-select">
+                        <option value="normal" selected>Select Options</option>
+                        <option value="italic">Italic</option>
+                        <option value="bold">Bold</option>
+                    </select>
+                </div>
+                <div class="card mt-2">
+                    <label class="h3" for="textAlign">Text Alignment</label>
+                    <div class="btn-group">
+                        <button onclick="alignLeft()" class="btn btn-primary"><span class="bi bi-align-start"></span>&nbsp;Left</button>
+                        <button onclick="alignCenter()" class="btn btn-secondary"><span class="bi bi-align-center"></span>&nbsp;Center</button>
+                        <button onclick="alignRight()" class="btn btn-danger">Right&nbsp;<span class="bi bi-align-end"></span></button>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <textarea class="w-75 mt-3" rows="20" placeholder="Enter your text here" id="txtResult"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
