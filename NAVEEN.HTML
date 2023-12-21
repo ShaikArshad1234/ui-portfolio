@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height:100vh;
+            background-color: #ad4482;
+        }
+        .birthdayCard {
+            position: relative;
+            width: 250px;
+            height:350px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+              transform: perspective(2500px);
+            transition: 4s;
+          }
+          .birthdayCard:hover {
+              transform: perspective(2500px) rotate(5deg);
+              box-shadow: inset 100px 20px 100px rgba(0,0,0,.15), 0 10px 100px rgba(0,0,0,0.3);
+          }      
+          .birthdayCard:hover .cardFront {
+            transform: rotateY(-160deg); 
+          }       
+          .birthdayCard:hover .front-text {
+            display: none;
+          }      
+          .birthdayCard:hover .wrap-deco {
+            display: none;
+          }  
+          .birthdayCard:hover .wrap-decoTwo {
+            display: none;
+          }   
+          .birthdayCard:hover .plate {
+            display: none;
+          }
+          .cardFront {
+            position: relative;
+            background-color: #fff;
+            width: 350px;
+            height:450px;
+            overflow: hidden;
+            transform-origin: left;
+            box-shadow: inset 100px 20px 100px rgba(0,0,0,.13), 30px 0 50px rgba(0,0,0,0.1);
+            transition: .4s;
+          }
+          
+          .happy, .toyou {
+            position: relative;
+            font-family: didot;
+            text-align: center;
+            backface-visibility: hidden;
+            font-size: 40px; 
+          }
+          
+          .happy {
+            top:150px;
+          }
+          
+          .toyou {
+            top:60px;
+          }
+          
+          .bday {
+            position: relative;
+            font-family: arial;
+            font-size: 30px;
+            text-align: center;
+            top:110px;
+          }
+          .BEST-FRIEND, .NAVEEN {
+            position: relative;
+            font-family: didot;
+            text-align: center;
+            backface-visibility: hidden;
+            font-size: 40px;
+            top: 30px;
+          }
+          .BEST-FRIEND {
+            top: 20px;
+          }
+          
+          .NAVEEN {
+            top: -10px;
+          }
+          .wrap-deco {
+            position: absolute;
+            top:-230px;
+            left:-200px;
+          }
+          
+          .decorations {
+            position: absolute;
+            width: 400px;
+            height: 300px;
+            border: 3px solid #333;
+            border-radius: 50%;
+          }
+          .decorations:before, .decorations:after, .decorationsTwo:before, .decorationsTwo:after, .decorationsThree:before, .decorationsThree:after {
+            content:"";
+            position: absolute;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            width:0;
+            height:0;
+          }
+          
+          .decorations:before {
+            border-top: 40px solid #f15bb5;
+            top:297px;
+            left:210px;
+            transform: rotate(-5deg);
+          }
+          
+          .decorations:after{
+            border-top: 40px solid #f4d35e;
+            top:288px;
+            left:260px;
+            transform: rotate(-17deg);
+          }
+          
+          .decorationsTwo:before {
+            border-top: 40px solid #00f5d4;
+            top:268px;
+            left:315px;
+            transform: rotate(-30deg);
+          }
+          
+          
+          .decorationsTwo:after, .decorationsThree:after {
+            border-top: 40px solid #9b5de5;
+            top:238px;
+            left:355px;
+            transform: rotate(-40deg);
+          }
+          
+          .wrap-decoTwo {
+            transform: scaleX(-1);
+            position: absolute;
+            top:-230px;
+            left:445px; 
+          }
+          
+          .decorationsThree:before {
+            border-top: 40px solid #00bbf9;
+            top:268px;
+            left:315px;
+            transform: rotate(-30deg);
+          }
+          
+          .plate {
+            position: absolute;
+            left:60px;
+            top:213px;
+          }
+          
+          .cake {
+            position: absolute;
+            overflow: hidden;
+            width:100px;
+            height: 50px;
+            background-color: #f15bb5;
+            border-radius: 10px 10px 0 0;
+            top:-80px;
+            left:60px;
+            box-shadow: inset 0 -15px #f9c74f, inset 0 15px #432818;
+          }
+          .cake:before {
+            content:"";
+            position: absolute;
+            background-color: #432818;
+            width:10px;
+            height:20px;
+            top:5px;
+            border-radius:20px;
+            box-shadow: 10px 5px #f15bb5, 20px 0px #432818, 30px 2px #f15bb5, 40px 5px #432818, 50px 5px #f15bb5, 60px 0px #432818, 70px 5px #f15bb5, 80px 5px #432818, 90px 5px #f15bb5;
+          }
+          
+          .plate:before {
+            content:"";
+            position: absolute;
+            background: repeating-linear-gradient(-45deg, #9b5de5, #9b5de5 3px, #00f5d4 3px, #00f5d4 6px);
+            width:7px;
+            height: 25px;
+            top:-100px;
+            left:105px;
+          }
+          
+          .plate:after {
+            content:"";
+            position: absolute;
+            width:1px;
+            height: 5px;
+            background-color: #554e4e;
+            top:-104px;
+            left:107px;
+          }
+          
+          
+          .flame {
+            position: absolute;
+            background-color: #fb5607;
+            border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+            transform: rotate(-45deg);
+            width:15px;
+            height:15px;
+            opacity:0.7;
+            top:-114px;
+            left:100px;
+          }
+          .cardInside {
+            position: absolute;
+            background-color: #fff;
+            width: 350px;
+            height:450px;
+            z-index:-1;
+            left:0;
+            top:0;
+            box-shadow: inset 100px 20px 100px rgba(0,0,0,0.2);
+          }
+          
+          .inside-text {
+            position: relative;
+            top:-160px;
+            transform: scale(0.7);
+          }
+          
+          .wishes {
+            position: relative;
+            top:-180px;
+            margin: 40px;
+            justify-content: flex;
+          }
+          
+          p {
+            font-family:'Roman', cursive;
+            color: #11cbe4;
+          }
+          
+          .name {
+            margin-left:15px;
+            top:-20;
+            color:red;
+          }          
+
+    </style>
+</head>
+<body>
+  <div class="birthdayCard">
+      <div class="cardFront">
+        <div class="front-text">
+              
+                <h3 class="happy">HAPPY</h3>
+                <h2 class="bday">BIRTHDAY</h2> 
+                <h3 class="toyou">to you!</h3>
+                <h1 class="BEST-FRIEND">MY DEAR BEST FRIEND.👨🏻‍🤝‍👨🏻</h1>
+                <h1 class="NAVEEN">NAVEEN</h1>
+            </div>
+            <div class="wrap-deco">
+                <div class="decorations"></div>
+                <div class="decorationsTwo"></div>
+            </div> 
+            <div class="wrap-decoTwo">
+                <div class="decorations"></div>
+                <div class="decorationsThree"></div>
+            </div>
+            <div class="plate">
+                <div class="cake"></div>
+                <div class="flame"></div>
+            </div>
+        </div> 
+        <div class="cardInside">
+            <div class="inside-text">
+                <h3 class="happy">HAPPY</h3>
+                <h2 class="bday">BIRTHDAY</h2> 
+                <h3 class="toyou">to you!</h3>  
+            </div>
+            <div class="wishes">
+                <p>Dear Best Friend,</p>
+                <p>Happy birthday!! I hope your day is filled with lots of love and laughter! May all of your birthday wishes come true.Wish u many many more 😊 returns of the day""My Dear Best Friendu"".Enjoy the ur born 👨🏻‍🍼day. comes true ur dreams👨🏻‍💻......thnk u sm u stayed(7'years) 👬time to me. U r finally break the frdship🚶🏻‍♂️💔🧍🏻‍♂️.</p>
+                <p class="name">NAVEEN, You are my Close Friend forever❣❣💞💓👥. </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
